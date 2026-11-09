@@ -113,19 +113,37 @@
     double myvariable = 42.0; // initial value stored in myvariable is 42.0
     myvariable = 99.0;        // new value stored in myvariable is 99.0
 </pre>
-<p>However, it is often very useful to be able to create a variable that cannot be modified after its initial value is set.  In C++, we use the <strong>const</strong> keyword to specify that a variable's value cannot be modified:</p>
+<p>However, it is often very useful to be able to create a variable that cannot be modified after its initial value is set.  In C++, we use the <code>const</code> keyword to specify that a variable's value cannot be modified after it is initialised:</p>
 <pre class="language-cpp">
     const std::string myvariable = "42";    // value of myvariable cannot be modified
 </pre>
 <hr>
 <h3>Variable Best Practices</h3>
 <p>There are a few rules to consider when creating variables:</p>
+<h4>Only create them if required</h4>
 <ul>
-    <li><strong>Only create them if required</strong> – The more variables you create, the more opportunity for failure, since each can be misused. Novice programmers often introduce unnecessary variables. You can usually tell when a variable is redundant if it appears on the <a class="glossary-term" id="glossary-origin-02-0005" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0005&amp;lesson=02#term-lhs-rhs" aria-label="Look up LHS and RHS in the programming glossary" title="Look up LHS and RHS in the programming glossary">left-hand side</a> of an <a class="glossary-term" id="glossary-origin-02-0006" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0006&amp;lesson=02#term-assignment" aria-label="Look up assignment in the programming glossary" title="Look up assignment in the programming glossary">assignment operator</a> (<code>=</code>) only once (or not at all!).</li>
-    <li><strong>Give them meaningful <a class="glossary-term" id="glossary-origin-02-0007" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0007&amp;lesson=02#term-identifier" aria-label="Look up identifier in the programming glossary" title="Look up identifier in the programming glossary">identifiers</a></strong> – An identifier is the name you assign to the variable. While many terms in a programming language are predefined, variable names are under your control. Clear, descriptive names reduce errors and make your program easier to understand.</li>
-    <li><strong>Variables are <a class="glossary-term" id="glossary-origin-02-0008" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0008&amp;lesson=02#term-code" aria-label="Look up code in the programming glossary" title="Look up code in the programming glossary">source code</a> only</strong> – They exist as named elements in your code, but once <a class="glossary-term" id="glossary-origin-02-0009" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0009&amp;lesson=02#term-compiler" aria-label="Look up compiler in the programming glossary" title="Look up compiler in the programming glossary">compiled</a> they are translated into memory locations and <a class="glossary-term" id="glossary-origin-02-0010" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0010&amp;lesson=02#term-cpu-register" aria-label="Look up CPU register in the programming glossary" title="Look up CPU register in the programming glossary">CPU registers</a>. Identifiers disappear during compilation. This means memory itself is “variable,” and even parts of your program not <a class="glossary-term" id="glossary-origin-02-0011" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0011&amp;lesson=02#term-definition" aria-label="Look up definition in the programming glossary" title="Look up definition in the programming glossary">defined</a> as variables can be overwritten by incorrect use of the ones you created.</li>
-    <li><strong>Variables define program <a class="glossary-term" id="glossary-origin-02-0012" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0012&amp;lesson=02#term-correctness" aria-label="Look up correctness in the programming glossary" title="Look up correctness in the programming glossary">correctness</a></strong> – Assuming a program compiles successfully and runs, errors occur only at the point of state changes — in other words, when variables are manipulated. This is why every variable you add is another opportunity for error. Use them sparingly and keep their <a class="glossary-term" id="glossary-origin-02-0013" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0013&amp;lesson=02#term-scope" aria-label="Look up scope in the programming glossary" title="Look up scope in the programming glossary">scope</a> narrow.</li>
+    <li>The more variables you create, the more opportunity for failure, since each can be misused. Novice programmers often introduce unnecessary variables. Most modern IDEs, including Visual Studio, will warn you about unused variables.</li>
 </ul>
+<h4>Give them meaningful <a class="glossary-term" id="glossary-origin-02-0007" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0007&amp;lesson=02#term-identifier" aria-label="Look up identifier in the programming glossary" title="Look up identifier in the programming glossary">identifiers</a></h4>
+<ul>
+    <li>An identifier is the name you assign to the variable. While many terms in a programming language are predefined, variable names are under your control. Clear, descriptive names reduce errors and make your program easier to understand.</li>
+    <li>In most cases, it makes sense to use noun phrases for variable names (e.g. "studentName").  For boolean variables, though, the convention is to use names that start with "is" or "has", followed by an affirmative (e.g. "isActive" rather than "isInactive").</li>
+</ul>
+<h4>Make variables <code>const</code> whenever possible</h4>
+<ul>
+    <li>Using <code>const</code> for variables that do not change their value after initialization helps prevent accidental modifications and makes the code more readable and maintainable.</li>
+</ul>
+<h4>Use an appropriate type to enforce invariants</h4>
+<ul>
+    <li>Selecting the right data type for a variable ensures that it can only hold values that make sense in the context of your program, helping to catch errors at compile time. For example, using the <code>double</code> type for a variable that should only hold integer values would be more prone to bugs than using the more appropriate <code>int</code> type.</li>
+</ul>
+<h4>Variables are <a class="glossary-term" id="glossary-origin-02-0008" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0008&amp;lesson=02#term-code" aria-label="Look up code in the programming glossary" title="Look up code in the programming glossary">source code</a> only</h4>
+<ul>
+   <li>They exist as named elements in your code, but once <a class="glossary-term" id="glossary-origin-02-0009" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0009&amp;lesson=02#term-compiler" aria-label="Look up compiler in the programming glossary" title="Look up compiler in the programming glossary">compiled</a> they are translated into memory locations and <a class="glossary-term" id="glossary-origin-02-0010" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0010&amp;lesson=02#term-cpu-register" aria-label="Look up CPU register in the programming glossary" title="Look up CPU register in the programming glossary">CPU registers</a>. Identifiers disappear during compilation. This means memory itself is “variable,” and even parts of your program not <a class="glossary-term" id="glossary-origin-02-0011" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0011&amp;lesson=02#term-definition" aria-label="Look up definition in the programming glossary" title="Look up definition in the programming glossary">defined</a> as variables can be overwritten by incorrect use of the variables you did create.</li>
+</ul>
+<hr>
+<h3>Variables define program <a class="glossary-term" id="glossary-origin-02-0012" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0012&amp;lesson=02#term-correctness" aria-label="Look up correctness in the programming glossary" title="Look up correctness in the programming glossary">correctness</a></h3>
+<p>Assuming a program compiles successfully and runs, errors occur only at the point of state changes — in other words, when variables are manipulated. This is why every variable you add is another opportunity for error. Use them sparingly and keep their <a class="glossary-term" id="glossary-origin-02-0013" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0013&amp;lesson=02#term-scope" aria-label="Look up scope in the programming glossary" title="Look up scope in the programming glossary">scope</a> narrow.</p>
 <p>This is why variables are central to <a class="glossary-term" id="glossary-origin-02-0014" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0014&amp;lesson=02#term-debugging" aria-label="Look up debugging in the programming glossary" title="Look up debugging in the programming glossary">debugging</a>: they are the “pressure points” of your program. Managing them well leads to correctness, clarity, and performance.</p>
 <hr>
 <h3>Example: Variables in Action</h3>
@@ -135,12 +153,12 @@
 #include &lt;iostream&gt;
 
 int main() {
-    int score1 = 78;   // meaningful identifier
-    int score2 = 85;
-    int score3 = 92;
+    const int score1 = 78;   // meaningful identifier
+    const int score2 = 85;
+    const int score3 = 92;
 
-    int sum = score1 + score2 + score3;   // variable with clear purpose
-    double average = sum / 3.0;           // avoid reusing "sum" incorrectly
+    const int sum = score1 + score2 + score3;   // variable with clear purpose
+    const double average = sum / 3.0;           // avoid reusing "sum" incorrectly
 
     std::cout &lt;&lt; "Average score: " &lt;&lt; average &lt;&lt; std::endl;
     return 0;
@@ -179,6 +197,7 @@ int main() {
     constexpr int myvariable = 42;       // compile-time constant (C++11)
     consteval int myvariable = 42;       // compile-time constant (C++14)
 </pre>
+<p>You might even run into code where all the variables are declared at the top of a function, rather than close to where they are used.  This was required in C code, and many older programmers struggled to break the habit when game development moved to using C++.</p>
 <hr>
 <h3>Deep Dive: Why Variables Matter</h3>
 <p>Think of variables not just as storage, but as the <em>moving parts</em> of your program. Errors almost always happen when <a class="glossary-term" id="glossary-origin-02-0019" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0019&amp;lesson=02#term-value" aria-label="Look up value in the programming glossary" title="Look up value in the programming glossary">values</a> change. A well-chosen, well-placed variable acts like a clearly labeled valve in a system: easy to monitor, easy to repair. A poorly chosen variable is like an unmarked pipe — you don’t know what flows through it, and when it <a class="glossary-term" id="glossary-origin-02-0020" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0020&amp;lesson=02#term-memory-leak" aria-label="Look up memory leak in the programming glossary" title="Look up memory leak in the programming glossary">leaks</a>, chaos ensues.</p>
