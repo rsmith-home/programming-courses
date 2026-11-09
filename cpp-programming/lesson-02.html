@@ -12,7 +12,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="C++ Programming">
     <meta property="og:title" content="C++ Programming - Lesson 02 - 2. The Variable">
-    <meta property="og:description" content="An introduction to how a state is represented in programming">
+    <meta property="og:description" content="An introduction to how state is represented in C++">
     <meta property="og:url" content="https://GMZX80.github.io/programming-courses/cpp-programming/lesson-02.html">
 </head>
 <body class="course-page lesson-page" data-lesson="02" data-art-pattern="cells" data-art-layout="focus-right">
@@ -72,7 +72,7 @@
             </nav>
             <p class="hero-kicker">Lesson 02 · 24 lesson course</p>
             <h1 id="lesson-title">2. The Variable</h1>
-            <p class="lesson-deck">An introduction to how a state is represented in programming</p>
+            <p class="lesson-deck">An introduction to how state is represented in C++</p>
             <div class="lesson-hero-actions"><a class="course-button course-button-secondary" href="lesson-01.html">← Lesson 01</a> <a class="course-button course-button-primary" href="index.html">View all lessons</a> <a class="course-button course-button-secondary" href="lesson-03.html">Lesson 03 →</a>
  <!-- glossary:lesson-action:start --><a class="course-button course-button-secondary glossary-course-link" href="glossary.html">Programming glossary</a><!-- glossary:lesson-action:end --></div>
         </div>
@@ -95,7 +95,30 @@
 <!-- lesson-art:end -->
 
 <h2>Lesson: Understanding <a class="glossary-term" id="glossary-origin-02-0001" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0001&amp;lesson=02#term-variable" aria-label="Look up variable in the programming glossary" title="Look up variable in the programming glossary">Variables</a></h2>
-<p>A <strong>variable</strong> is an element of your <a class="glossary-term" id="glossary-origin-02-0002" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0002&amp;lesson=02#term-program" aria-label="Look up program in the programming glossary" title="Look up program in the programming glossary">program</a> that represents some <a class="glossary-term" id="glossary-origin-02-0003" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0003&amp;lesson=02#term-state" aria-label="Look up state in the programming glossary" title="Look up state in the programming glossary">state</a>. This state may, and is expected to, change during the execution of your program. Variables are the moving parts of your program — where errors and <a class="glossary-term" id="glossary-origin-02-0004" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0004&amp;lesson=02#term-bug" aria-label="Look up bug in the programming glossary" title="Look up bug in the programming glossary">bugs</a> often emerge. To use them effectively, you must understand both their purpose and their risks.</p>
+<p>A <strong>variable</strong> is an element of your <a class="glossary-term" id="glossary-origin-02-0002" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0002&amp;lesson=02#term-program" aria-label="Look up program in the programming glossary" title="Look up program in the programming glossary">program</a> that represents some <a class="glossary-term" id="glossary-origin-02-0003" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0003&amp;lesson=02#term-state" aria-label="Look up state in the programming glossary" title="Look up state in the programming glossary">state</a>. This state may, and is often expected to, change during the execution of your program. Variables are the moving parts of your program — where errors and <a class="glossary-term" id="glossary-origin-02-0004" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0004&amp;lesson=02#term-bug" aria-label="Look up bug in the programming glossary" title="Look up bug in the programming glossary">bugs</a> often emerge. To use them effectively, you must understand both their purpose and their risks.</p>
+<hr>
+<h3>Variable Syntax</h3>
+<p>To add a variable to your C++ program, you can use the following syntax:</p>
+<pre class="language-cpp">
+    int myvariable = 42; 
+</pre>
+<p>Where:</p>
+<ul>
+    <li><strong>'int'</strong> is the <strong>type</strong> of the variable, determining its valid values</li>
+    <li><strong>'myvariable'</strong> is the <strong>identifier</strong> of the variable, giving it a human-readable name</li>
+    <li><strong>'42'</strong> is an (optional) <strong>initial value</strong> for the variable</li>
+</ul>
+<p>By default, variables in C++ are <strong>modifiable</strong>, meaning that they can be given a new value to replace their initial value, as in this example:</p>
+<pre class="language-cpp">
+    double myvariable = 42.0; // initial value stored in myvariable is 42.0
+    myvariable = 99.0;        // new value stored in myvariable is 99.0
+</pre>
+<p>However, it is often very useful to be able to create a variable that cannot be modified after its initial value is set.  In C++, we use the <strong>const</strong> keyword to specify that a variable's value cannot be modified:</p>
+<pre class="language-cpp">
+    const std::string myvariable = "42";    // value of myvariable cannot be modified
+</pre>
+<hr>
+<h3>Variable Best Practices</h3>
 <p>There are a few rules to consider when creating variables:</p>
 <ul>
     <li><strong>Only create them if required</strong> – The more variables you create, the more opportunity for failure, since each can be misused. Novice programmers often introduce unnecessary variables. You can usually tell when a variable is redundant if it appears on the <a class="glossary-term" id="glossary-origin-02-0005" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0005&amp;lesson=02#term-lhs-rhs" aria-label="Look up LHS and RHS in the programming glossary" title="Look up LHS and RHS in the programming glossary">left-hand side</a> of an <a class="glossary-term" id="glossary-origin-02-0006" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0006&amp;lesson=02#term-assignment" aria-label="Look up assignment in the programming glossary" title="Look up assignment in the programming glossary">assignment operator</a> (<code>=</code>) only once (or not at all!).</li>
@@ -110,7 +133,6 @@
 <pre><code class="language-cpp">
 // Calculate the average of three exam scores
 #include &lt;iostream&gt;
-using namespace std;
 
 int main() {
     int score1 = 78;   // meaningful identifier
@@ -120,7 +142,7 @@ int main() {
     int sum = score1 + score2 + score3;   // variable with clear purpose
     double average = sum / 3.0;           // avoid reusing "sum" incorrectly
 
-    cout &lt;&lt; "Average score: " &lt;&lt; average &lt;&lt; endl;
+    std::cout &lt;&lt; "Average score: " &lt;&lt; average &lt;&lt; std::endl;
     return 0;
 }
 </code></pre>
@@ -146,6 +168,18 @@ int main() {
                 </ul>
 </details>
 <hr>
+<h3>Variables in the Wild</h3>
+<p>When meeting variables in existing C++ code, they may look a little different to the examples you have seen so far.  This is because C++ is a complex language that has evolved over time, and there are often multiple different ways of achieving the same results.  A basic knowledge of these different approaches is necessary in order to read code written by other C++ programmers.</p>
+<p>Here are some of the different guises C++ variables may take in the wild:</p>
+<pre>
+    int myvariable = 42;                 // standard variable declaration
+    int myvariable(42);                  // constructor-style initialization
+    int myvariable{42};                  // uniform initialization (C++11)
+    int myvariable = {42};               // copy-list initialization (C++11)
+    constexpr int myvariable = 42;       // compile-time constant (C++11)
+    consteval int myvariable = 42;       // compile-time constant (C++14)
+</pre>
+<hr>
 <h3>Deep Dive: Why Variables Matter</h3>
 <p>Think of variables not just as storage, but as the <em>moving parts</em> of your program. Errors almost always happen when <a class="glossary-term" id="glossary-origin-02-0019" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0019&amp;lesson=02#term-value" aria-label="Look up value in the programming glossary" title="Look up value in the programming glossary">values</a> change. A well-chosen, well-placed variable acts like a clearly labeled valve in a system: easy to monitor, easy to repair. A poorly chosen variable is like an unmarked pipe — you don’t know what flows through it, and when it <a class="glossary-term" id="glossary-origin-02-0020" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0020&amp;lesson=02#term-memory-leak" aria-label="Look up memory leak in the programming glossary" title="Look up memory leak in the programming glossary">leaks</a>, chaos ensues.</p>
 <p>As you progress, remember: <strong>fewer, clearer variables make debugging and reasoning much easier.<br></strong></p>
@@ -159,7 +193,6 @@ int main() {
     In the snippet below, which variables are unnecessary or risky? Rewrite it with fewer, clearer variables.
     <pre><code class="language-cpp">// Compute average and pass/fail (threshold 50)
 #include &lt;iostream&gt;
-using namespace std;
 
 int main() {
     int a = 78;        // exam 1
@@ -172,7 +205,7 @@ int main() {
     avg = total / 3.0;
     bool t = true;     // &lt;-- defaulted, then overwritten
     if (avg &lt; 50.0) { t = false; }
-    cout &lt;&lt; "Average: " &lt;&lt; avg &lt;&lt; "  passed? " &lt;&lt; (t ? "yes" : "no") &lt;&lt; endl;
+    std::cout &lt;&lt; "Average: " &lt;&lt; avg &lt;&lt; "  passed? " &lt;&lt; (t ? "yes" : "no") &lt;&lt; std::endl;
     return 0;
 }
 </code></pre>
@@ -199,14 +232,14 @@ bool f = a1 &gt; 50.0;  // pass flag?
     <strong>Tighten scope &amp; add <code>const</code></strong><br>
     Move <a class="glossary-term" id="glossary-origin-02-0021" href="glossary.html?from=lesson-02.html%23glossary-origin-02-0021&amp;lesson=02#term-declaration" aria-label="Look up declaration in the programming glossary" title="Look up declaration in the programming glossary">declarations</a> as close as possible to first use, and mark read-only variables as <code>const</code>.
     <pre><code class="language-cpp">double average;
-int n; cin &gt;&gt; n;
+int n; std::cin &gt;&gt; n;
 int sum = 0;
 for (int i = 0; i &lt; n; ++i) {
-    int v; cin &gt;&gt; v;
+    int v; std::cin &gt;&gt; v;
     sum += v;
 }
 average = sum / static_cast&lt;double&gt;(n);
-cout &lt;&lt; "Average: " &lt;&lt; average &lt;&lt; "\n";
+std::cout &lt;&lt; "Average: " &lt;&lt; average &lt;&lt; std::endl;
 </code></pre>
     <ul>
       <li>Which variables can be <code>const</code>?</li>
@@ -219,17 +252,16 @@ cout &lt;&lt; "Average: " &lt;&lt; average &lt;&lt; "\n";
     <strong>Debug by watching state transitions</strong><br>
     The following program occasionally prints the wrong “max”. Identify the bug and the exact variable transition where it happens. Fix it.
     <pre><code class="language-cpp">#include &lt;iostream&gt;
-using namespace std;
 
 int main() {
     int maxVal;            // &lt;-- uninitialised
-    int count; cin &gt;&gt; count;
+    int count; std::cin &gt;&gt; count;
     for (int i = 0; i &lt; count; ++i) {
-        int val; cin &gt;&gt; val;
+        int val; std::cin &gt;&gt; val;
         if (val &gt; maxVal)  // compare against garbage on first iteration
             maxVal = val;
     }
-    cout &lt;&lt; "Max: " &lt;&lt; maxVal &lt;&lt; "\n";
+    std::cout &lt;&lt; "Max: " &lt;&lt; maxVal &lt;&lt; std::endl;
 }
 </code></pre>
     <ul>
@@ -292,11 +324,11 @@ int main() {
     const int collectedPoints{25};
 
     score = score + collectedPoints;
-    std::cout &lt;&lt; "After collection: " &lt;&lt; score &lt;&lt; '\n';
+    std::cout &lt;&lt; "After collection: " &lt;&lt; score &lt;&lt; std::endl;
 
     const int penalty{10};
     score = score - penalty;
-    std::cout &lt;&lt; "After penalty: " &lt;&lt; score &lt;&lt; '\n';
+    std::cout &lt;&lt; "After penalty: " &lt;&lt; score &lt;&lt; std::endl;
 }
 </code></pre>
 <table>
